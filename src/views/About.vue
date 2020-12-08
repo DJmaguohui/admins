@@ -1,5 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+  <!--首页-->
+    欢迎来到辉太郎的后台管理，准备好抓羊了吗？🐐🐑
   </div>
 </template>

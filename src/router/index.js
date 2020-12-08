@@ -1,28 +1,91 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(Router)
 
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
-];
+export default new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: '/',
+      name: 'login',
+      component:()=>import('../views/Login.vue'),
+      beforeEnter:function(to,from,next){
+        if(sessionStorage.getItem("token")){
+          next("/home")
+        }else{
+          next()
+        }
+      }
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component:()=>import('../views/Home.vue'),
+      beforeEnter:function(to,from,next){
+        if(sessionStorage.getItem("token")){
+          next()
+        }else{
+          next("/")
+        }
+      },
+      redirect:"/about",
+      children:[
+        {
+          path: '/about',
+          name: 'about',
+          component: () => import('../views/About.vue')
+        },
+        {
+          path: '/users',
+          name: 'users',
+          component: () => import('../components/User.vue')
+        },
+        {
+          path: '/roles',
+          name: 'roles',
+          component: () => import('../components/Roles.vue')
+        },
+        {
+          path: '/rights',
+          name: 'rights',
+          component: () => import('../components/rights.vue')
+        },
+        {
+          path: '/goods',
+          name: 'goods',
+          component: () => import('../components/Goods.vue')
+        },
+        // 商品列表添加页
+        {
+          path: '/goodsadd',
+          name: 'goodsAdd',
+          component: () => import('../components/GoodsAdd.vue')
+        },
+        {
+          path: '/params',
+          name: 'params',
+          component: () => import('../components/Params.vue')
+        },
+        {
+          path: '/orders',
+          name: 'orders',
+          component: () => import('../components/Orders.vue')
+        },
+        {
+          path: '/reports',
+          name: 'reports',
+          component: () => import('../components/Reports.vue')
+        },
+        {
+          path: '/categories',
+          name: 'categories',
+          component: () => import('../components/Categories.vue')
+        }
+      ]
+    }
+   
+  ]
+})
 
-const router = new VueRouter({
-  routes
-});
-
-export default router;

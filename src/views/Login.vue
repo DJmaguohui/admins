@@ -58,8 +58,9 @@ export default {
         console.log(res);
         if (res.data.meta.status == 200 && res.statusText == "OK") {
           this.$message.success(res.data.meta.msg);
-          this.$router.push("/home");
           sessionStorage.setItem("token", res.data.data.token);
+          this.$router.push("/home");
+          
         } else {
           this.$message.warning(res.data.meta.msg);
         }
@@ -73,16 +74,18 @@ export default {
 .login {
   width: 100%;
   height: 100%;
-  background-color: rgb(41, 47, 109);
+  background-color:#2b4b6b;
   display: flex;
   align-items: center;
   justify-content: center;
   & > .box {
-    width: 400px;
-    height: 180px;
-    background-color: #fff;
-    padding: 50px 10px 10px 10px;
+    width: 450px;
+    height: 220px;
+    background-color: rgb(237, 245, 241);
+    padding: 90px 10px 0 10px;
     position: relative;
+    box-shadow: 0 0 10px #fff;
+    border-radius: 15px;
     .logo {
       width: 120px;
       height: 120px;
@@ -92,9 +95,10 @@ export default {
       align-items: center;
       justify-content: center;
       background-color: #fff;
+      box-shadow: 0 0 15px rgb(206, 183, 183);
       position: absolute;
-      top: -100px;
-      left: 32%;
+      top: -80px;
+      left: 36%;
       & > img {
         width: 120px;
         background-color: rgb(209, 204, 204);

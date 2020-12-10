@@ -5,10 +5,10 @@
       <el-header>
         <div class="left">
           <img src="../assets/logo.png" alt="" />
-          <h2>电商后台管理系统</h2>
+          <h3>电商后台管理系统</h3>
         </div>
 
-        <el-button @click="Quit()">退出</el-button>
+        <el-button type="info" @click="Quit()">退出</el-button>
       </el-header>
       <!-- 内容 -->
       <el-container>
@@ -120,7 +120,6 @@ export default {
     flex-direction: column;
     & > .el-header {
       width: 100%;
-      height: 10%;
       background-color: #333;
       display: flex;
       align-items: center;
@@ -129,11 +128,14 @@ export default {
         width: 30%;
         height: 100%;
         display: flex;
+        align-items: center;
         &>img{
-          width: 18%;
+          width: 50px;
+          height: 50px;
+          box-shadow: 0 0 0 2px rgb(211, 205, 205);
           border-radius: 50%;
         }
-        & > h2 {
+        & > h3 {
           font-weight: 100;
           color: #fff;
           margin-left: 10px;
@@ -148,6 +150,7 @@ export default {
         height: 100%;
         display: flex;
         flex-direction: column;
+        background: #333444;
         & > .el-menu > span {
           display: block;
           width: 100%;

@@ -176,8 +176,6 @@ export default {
     },
     //左侧ui事件
     beforeLeave(activeName, oldActiveName) {
-      // console.log(activeName);
-      // console.log(oldActiveName);
       if (this.addForm.goods_cat.length !== 3 && oldActiveName == "0") {
         this.$message.error("请选择商品分类好吗？");
         return false;
